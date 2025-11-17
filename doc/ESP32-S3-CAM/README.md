@@ -17,11 +17,11 @@ What we need for functionality
 <a name="esp32"></a>
 ##  ESP32-S3-CAM
 
-Basic informations:
+Basic information:
 - Onboard RGB LED (most likely ws2812b)
 - Option connecting external FLASH LED
 - Micro SD card slot
-- Internal or External WiFi antena
+- Internal or External WiFi antenna
 - 16MB FLASH and 8MB external PSRAM
 - 520 KB SRAM
 - Excellent WiFi signal
@@ -70,7 +70,7 @@ And command for FLASH FW is here, where **/dev/ttya0** is your serial interface 
 ./esptool --chip esp32s3 -p /dev/ttya0 -b 921600 --before default_reset --after hard_reset  write_flash --erase-all --flash_mode dio --flash_size 16MB --flash_freq 80m 0x0 ESP32_PrusaConnectCam.ino.bootloader.bin 0x8000 ESP32_PrusaConnectCam.ino.partitions.bin 0x10000 ESP32_PrusaConnectCam.ino.bin
 ```
 
-This command contains the parameter **--eras-all**, which erases the entire flash in the MCU. So, for just updating the firmware, it is necessary to remove the parameter **--eras-all**; otherwise, the MCU configuration will also be deleted. The basic command list can be found [here](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/esptool/basic-commands.html)
+This command contains the parameter **--erase-all**, which erases the entire flash in the MCU. So, for just updating the firmware, it is necessary to remove the parameter **--erase-all**; otherwise, the MCU configuration will also be deleted. The basic command list can be found [here](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/esptool/basic-commands.html)
 
 Here is the command for updating the firmware in the MCU without erasing the MCU configuration
 

@@ -52,10 +52,19 @@ void Server_InitWebServer() {
       /* send photo with exif data */
       SystemLog.AddEvent(LogLevel_Verbose, F("Send photo with EXIF data"));
       size_t total_len = SystemCamera.GetPhotoExifData()->len + SystemCamera.GetPhotoFb()->len - SystemCamera.GetPhotoExifData()->offset;
-      auto response = request->beginResponseStream("image/jpg");
+      auto response = request->beginChunkedResponse("image/jpg", [total_len](uint8_t *buffer, size_t maxLen, size_t index) -> size_t {
+        size_t len = 0;
+        if (index < SystemCamera.GetPhotoExifData()->len) {
+          len = min(maxLen, SystemCamera.GetPhotoExifData()->len - index);
+          memcpy(buffer, SystemCamera.GetPhotoExifData()->header + index, len);
+        } else {
+          size_t offset = index - SystemCamera.GetPhotoExifData()->len + SystemCamera.GetPhotoExifData()->offset;
+          len = min(maxLen, SystemCamera.GetPhotoFb()->len - offset);
+          memcpy(buffer, SystemCamera.GetPhotoFb()->buf + offset, len);
+        }
+        return len;
+      });
       response->addHeader("Content-Length", String(total_len));
-      response->write(SystemCamera.GetPhotoExifData()->header, SystemCamera.GetPhotoExifData()->len);
-      response->write(&SystemCamera.GetPhotoFb()->buf[SystemCamera.GetPhotoExifData()->offset], SystemCamera.GetPhotoFb()->len - SystemCamera.GetPhotoExifData()->offset);
       request->send(response);
 
     } else {

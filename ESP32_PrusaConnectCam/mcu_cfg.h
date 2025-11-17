@@ -7,22 +7,22 @@
    Contact: miroslav.pivovarsky@gmail.com
 
    @bug: no know bug
-
 */
 
 #ifndef _MCU_CFG_H_
 #define _MCU_CFG_H_
 
 /* ----------------- CAMERA TYPE  ---------------*/
-#define AI_THINKER_ESP32_CAM           true
-#define ESP32_WROVER_DEV               false
-#define CAMERA_MODEL_ESP32_S3_DEV_CAM  false
-#define CAMERA_MODEL_ESP32_S3_EYE_2_2  false
-#define CAMERA_MODEL_XIAO_ESP32_S3_CAM false
-#define CAMERA_MODEL_ESP32_S3_CAM      false
+#define AI_THINKER_ESP32_CAM            true
+#define ESP32_WROVER_DEV                false
+#define CAMERA_MODEL_ESP32_S3_DEV_CAM   false
+#define CAMERA_MODEL_ESP32_S3_EYE_2_2   false
+#define CAMERA_MODEL_XIAO_ESP32_S3_CAM  false
+#define CAMERA_MODEL_ESP32_S3_CAM       false
+#define ESP32_S3_WROOM_FREENOVE         false
 
 /* ---------------- BASIC MCU CFG  --------------*/
-#define SW_VERSION                  "1.1.0"                 ///< SW version
+#define SW_VERSION                  "1.1.2"                 ///< SW version
 #define SW_BUILD                    __DATE__ " " __TIME__   ///< build number
 #define CONSOLE_VERBOSE_DEBUG       false                   ///< enable/disable verbose debug log level for console
 #define DEVICE_HOSTNAME             "Prusa-ESP32cam"        ///< device hostname
@@ -90,7 +90,7 @@
 
 /* ----------------- WiFi CFG -------------------*/
 #define WIFI_STA_WDG_TIMEOUT        60000                   ///< STA watchdog timeout [ms]
-#define WIFI_DISABLE_UNENCRYPTED_STA_PASS_CHECK false      ///< enable/disable WEP/WPA/WPA2/... encryption for STA mode . for the wifi network without encryption set to false
+#define WIFI_DISABLE_UNENCRYPTED_STA_PASS_CHECK false       ///< enable/disable WEP/WPA/WPA2/... encryption for STA mode . for the wifi network without encryption set to false
 
 /* ----------------- NTP CFG --------------------*/
 #define NTP_SERVER_1                "pool.ntp.org"          ///< NTP server

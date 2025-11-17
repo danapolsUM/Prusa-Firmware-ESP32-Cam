@@ -29,7 +29,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
 	<link rel="stylesheet" type="text/css" href="styles.css?v=1.0.0">
-	<script src="jquery-3.7.0.min.js"></script>
+	<script src="/jquery-3.7.0.min.js"></script>
 	<script>
 		$(document).ready(function () {
 			$("a").click(function (e) {
@@ -98,13 +98,13 @@ const char index_html[] PROGMEM = R"rawliteral(
 		<td><a href="https://github.com/Prusa-Development/Prusa-Firmware-ESP32-Cam/" id="github-link"><svg height="25"><image href="github-icon.svg"></svg></a></td>
 	</tr></table>
 </body>
-<script src="scripts.js"></script>
-<script>
-	sliderCheck();
-	get_data();
-	addClickListener('github-link');
-	addClickListener('forum-link');
-</script>
+	<script src="scripts.js"></script>
+	<script>
+		sliderCheck();
+		get_data();
+		addClickListener('github-link');
+		addClickListener('forum-link');
+	</script>
 </html>
 )rawliteral";
 
@@ -176,7 +176,7 @@ const char page_wifi_html[] PROGMEM = R"rawliteral(
 			<table>
 				<tr><td class="w1">Connect to Wi-Fi network</td></tr>
 				<tr><td class="w2"  align="right">Wi-Fi network name (SSID) </td><td><input type="text" name="wifi_ssid" id=wifi_ssid_id ></td></tr>
-				<tr><td class="w2"  align="right">Password </td><td><input type="text" name="wifi_pass" id=wifi_pass_id></td></tr>
+				<tr><td class="w2"  align="right">Password </td><td><input type="password" name="wifi_pass" id=wifi_pass_id></td></tr>
 				<tr><td></td><td align="center"><button class="btn_save_w" onclick="setWifi(document.getElementById('wifi_ssid_id').value, document.getElementById('wifi_pass_id').value)">Save & Connect</button></td></tr>
 			</table>
 		</td><td></td></tr>
@@ -1342,7 +1342,7 @@ function updateProgress() {
 
 function checkUpdate() {
 	var xmlHttp = new XMLHttpRequest();
-	alert("Connecting to server... Please wait several second");
+	alert("Connecting to server... Please wait several seconds");
 	xmlHttp.open("GET", "/check_web_ota_update", false);
 	xmlHttp.send(null);
 	alert(xmlHttp.responseText);

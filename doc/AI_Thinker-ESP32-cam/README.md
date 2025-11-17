@@ -18,7 +18,7 @@ What we need for functionality
 <a name="esp32"></a>
 ## ESP32-CAM AI-thinker board 
 
-Basic informations:
+Basic information:
 - Low cost version
 - FLASH LED on the board
 - Option connecting external FLASH LED
@@ -32,7 +32,7 @@ It's a few dollars board with **ESP32** MCU and Camera. It's necessary to buy a 
 
 <img src="esp32-cam.jpg" width=30% height=30%>
 
-In the following picture, we can see the **ESP32-CAM** board and the programator for the board. 
+In the following picture, we can see the **ESP32-CAM** board and the programmer for the board. 
 
 <img src="esp32_and_prog.jpg" width=30% height=30%>
 
@@ -117,7 +117,7 @@ And command for FLASH FW is here, where **/dev/ttya0** is your serial interface 
 ./esptool -p /dev/ttya0 -b 460800 --before default_reset --after hard_reset --chip esp32 write_flash --erase-all --flash_mode dio --flash_size 4MB --flash_freq 80m 0x1000 ESP32_PrusaConnectCam.ino.bootloader.bin 0x8000 ESP32_PrusaConnectCam.ino.partitions.bin 0x10000 ESP32_PrusaConnectCam.ino.bin
 ```
 
-This command contains the parameter **--eras-all**, which erases the entire flash in the MCU. So, for just updating the firmware, it is necessary to remove the parameter **--eras-all**; otherwise, the MCU configuration will also be deleted. The basic command list can be found [here](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/esptool/basic-commands.html)
+This command contains the parameter **--erase-all**, which erases the entire flash in the MCU. So, for just updating the firmware, it is necessary to remove the parameter **--erase-all**; otherwise, the MCU configuration will also be deleted. The basic command list can be found [here](https://docs.espressif.com/projects/esptool/en/latest/esp32s3/esptool/basic-commands.html)
 
 Here is the command for updating the firmware in the MCU without erasing the MCU configuration
 
